@@ -58,9 +58,7 @@ export default {
     passwordRepeat: ""
   }),
   methods: {
-    signUp() {
-      console.log(this.name);
-    }
+    signUp() {}
   }
 };
 </script>
