@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Login from './views/Login/index.vue';
+import Signup from './views/Signup/index.vue';
 import Home from './views/Home/index.vue';
 
 // LAYOUTS:
@@ -13,13 +14,15 @@ Vue.component('PrivateLayout', PrivateLayout);
 Vue.component('MembershipLayout', MembershipLayout);
 Vue.component('DefaultLayout', DefaultLayout);
 
-const routes = [
-  { path: '/login', meta: { layout: 'MembershipLayout' }, component: Login },
-  { path: '/', meta: { layout: 'PrivateLayout' }, component: Home },
-  { path: '/signup', component: Home }
-];
-
 export default new VueRouter({
-  routes,
-  mode: 'history'
+  mode: 'history',
+  routes: [
+    { path: '/login', meta: { layout: 'MembershipLayout' }, component: Login },
+    {
+      path: '/signup',
+      meta: { layout: 'MembershipLayout' },
+      component: Signup
+    },
+    { path: '/', meta: { layout: 'PrivateLayout' }, component: Home }
+  ]
 });
