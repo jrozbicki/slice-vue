@@ -1,2 +1,5 @@
 # slice-vue
-Slice project from another repository rewritten in Vue
+
+Slice is a tool for sharing expenses equally.
+
+This version is written in Vue.
