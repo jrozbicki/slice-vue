@@ -1,23 +1,14 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
 import App from './App.vue';
-import Login from './views/Login/index.vue';
-import Home from './views/Home/index.vue';
+import router from './router';
+import store from './store';
 
-Vue.use(VueRouter);
-
-const routes = [
-  { path: '/login', component: Login },
-  { path: '/', component: Home }
-];
-
-const router = new VueRouter({
-  routes,
-  mode: 'history'
-});
+import vuetify from './plugins/vuetify';
 
 new Vue({
   el: '#app',
+  store,
   router,
+  vuetify,
   render: h => h(App)
 });
