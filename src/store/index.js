@@ -4,7 +4,7 @@ import membership from './modules/membership';
 
 Vue.use(Vuex);
 
-export default new Vuex({
+export default new Vuex.Store({
   modules: {
     membership
   }

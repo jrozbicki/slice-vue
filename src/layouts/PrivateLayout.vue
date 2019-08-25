@@ -1,12 +1,18 @@
 <template>
   <div>
-    <div>navbar</div>
+    <Navbar />
     <slot />
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import Navbar from "../components/Navbar";
+
 export default {
-  name: "PrivateLayout"
+  name: "PrivateLayout",
+  components: {
+    Navbar
+  }
 };
 </script>

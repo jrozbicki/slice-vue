@@ -5,7 +5,7 @@
     </md-avatar>
     <h1 class="md-headline">Sign in</h1>
 
-    <form @submit.prevent="signIn">
+    <form @submit.prevent="login">
       <md-field>
         <label for="email">Email</label>
         <md-input type="email" id="email" v-model="email" autocomplete="email" required autofocus />
@@ -31,6 +31,7 @@
 
 <script>
 import Vue from "vue";
+import { mapActions } from "vuex";
 import {
   MdContent,
   MdAvatar,
@@ -48,12 +49,18 @@ Vue.use(MdButton);
 export default {
   name: "LoginForm",
   data: () => ({
-    email: "",
-    password: ""
+    email: "test@slice.com",
+    password: "password"
   }),
   methods: {
-    signIn() {}
+    ...mapActions(["loginAction"]),
+    login() {
+      this.loginAction({ email: this.email, password: this.password });
+    }
   }
+  // destroyed() {
+  //   this.logoutAction();
+  // }
 };
 </script>
 

@@ -5,12 +5,16 @@
 </template>
 
 <script>
+import { authObserver } from "./api/membership";
 export default {
   name: "App",
   computed: {
     layout() {
       return this.$route.meta.layout || "DefaultLayout";
     }
+  },
+  created() {
+    authObserver();
   }
 };
 </script>
