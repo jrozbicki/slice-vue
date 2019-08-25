@@ -6,7 +6,6 @@
 </template>
 
 <script>
-import Vue from "vue";
 import Navbar from "../components/Navbar";
 
 export default {

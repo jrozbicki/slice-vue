@@ -1,56 +1,37 @@
 <template>
-  <md-content class="md-elevation-3">
-    <md-avatar class="md-avatar-icon md-primary">
-      <md-icon>how_to_reg</md-icon>
-    </md-avatar>
-    <h1 class="md-headline">Sign up</h1>
+  <v-card>
+    <div class="flex-center">
+      <v-avatar color="primary">
+        <v-icon color="white">mdi-account-check</v-icon>
+      </v-avatar>
+    </div>
+    <h1 class="v-headline">Sign up</h1>
 
     <form @submit.prevent="signUp">
-      <md-field>
-        <label for="signup-username">Username</label>
-        <md-input id="signup-username" v-model="username" required autofocus />
-      </md-field>
+      <v-text-field v-model="username" label="Username" required />
+      <v-text-field v-model="email" label="Email" required />
+      <v-text-field v-model="password" label="Password" type="password" required />
+      <v-text-field v-model="passwordRepeat" label="Repeat password" type="password" required />
 
-      <md-field>
-        <label for="signup-email">Email</label>
-        <md-input id="signup-email" type="email" v-model="email" autocomplete="email" required />
-      </md-field>
+      <v-btn type="submit" color="primary" class="sign-up">Sign Up</v-btn>
 
-      <md-field>
-        <label for="signup-password">Password</label>
-        <md-input id="signup-password" type="password" v-model="password" required />
-      </md-field>
-
-      <md-field>
-        <label for="password">Repeat password</label>
-        <md-input id="repeat-password" type="password" v-model="passwordRepeat" required />
-      </md-field>
-
-      <md-button type="submit" class="md-raised md-accent sign-up">Sign Up</md-button>
-
-      <md-button to="/login" class="md-raised md-primary">Go back</md-button>
+      <v-btn to="/login" class>Go back</v-btn>
     </form>
-  </md-content>
+  </v-card>
 </template>
 
 <script>
-import Vue from "vue";
-import {
-  MdContent,
-  MdAvatar,
-  MdIcon,
-  MdField,
-  MdButton
-} from "vue-material/dist/components";
-
-Vue.use(MdContent);
-Vue.use(MdAvatar);
-Vue.use(MdIcon);
-Vue.use(MdField);
-Vue.use(MdButton);
+import { VCard, VAvatar, VIcon, VBtn, VTextField } from "vuetify/lib";
 
 export default {
   name: "SignupForm",
+  components: {
+    VCard,
+    VAvatar,
+    VIcon,
+    VTextField,
+    VBtn
+  },
   data: () => ({
     username: "",
     email: "",
@@ -64,20 +45,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.md-content {
-  min-width: 40%;
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.v-card {
+  width: 50%;
   padding: 16px;
+  margin: 16px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  max-width: 380px;
+  max-width: 360px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 }
 
-.md-headline {
+.v-headline {
   text-align: center;
 }
 
-.md-button {
+.v-avatar {
+  margin: 16px auto;
+}
+
+.v-headline {
+  text-align: center;
+}
+
+.v-btn {
   margin: 0px;
   width: 100%;
 }

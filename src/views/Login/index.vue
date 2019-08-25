@@ -1,53 +1,43 @@
 <template>
-  <md-content class="md-elevation-3">
-    <md-avatar class="md-avatar-icon md-primary">
-      <md-icon>lock_open</md-icon>
-    </md-avatar>
-    <h1 class="md-headline">Sign in</h1>
+  <v-card>
+    <div class="flex-center">
+      <v-avatar color="primary">
+        <v-icon color="white">mdi-lock-open</v-icon>
+      </v-avatar>
+    </div>
+    <h1 class="v-headline">Sign in</h1>
 
     <form @submit.prevent="login">
-      <md-field>
-        <label for="email">Email</label>
-        <md-input type="email" id="email" v-model="email" autocomplete="email" required autofocus />
-      </md-field>
+      <v-text-field type="email" v-model="email" autocomplete="email" required autofocus />
 
-      <md-field>
-        <label for="password">Password</label>
-        <md-input
-          id="password"
-          type="password"
-          v-model="password"
-          autocomplete="current-password"
-          required
-        />
-      </md-field>
+      <v-text-field
+        type="password"
+        v-model="password"
+        autocomplete="current-password"
+        label="Password"
+        required
+      />
 
-      <md-button type="submit" class="md-raised md-primary">Sign in</md-button>
+      <v-btn type="submit" color="primary">Sign in</v-btn>
       <div class="text-between">Don't have account? Go and Sign up below!</div>
-      <md-button to="/signup" class="md-raised md-accent">Sign up</md-button>
+      <v-btn to="/signup">Sign up</v-btn>
     </form>
-  </md-content>
+  </v-card>
 </template>
 
 <script>
-import Vue from "vue";
 import { mapActions } from "vuex";
-import {
-  MdContent,
-  MdAvatar,
-  MdIcon,
-  MdField,
-  MdButton
-} from "vue-material/dist/components";
-
-Vue.use(MdContent);
-Vue.use(MdAvatar);
-Vue.use(MdIcon);
-Vue.use(MdField);
-Vue.use(MdButton);
+import { VCard, VBtn, VTextField, VAvatar, VIcon } from "vuetify/lib";
 
 export default {
   name: "LoginForm",
+  components: {
+    VTextField,
+    VCard,
+    VBtn,
+    VAvatar,
+    VIcon
+  },
   data: () => ({
     email: "test@slice.com",
     password: "password"
@@ -58,27 +48,34 @@ export default {
       this.loginAction({ email: this.email, password: this.password });
     }
   }
-  // destroyed() {
-  //   this.logoutAction();
-  // }
 };
 </script>
 
 <style lang="scss" scoped>
-.md-content {
-  min-width: 40%;
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.v-card {
+  width: 50%;
   padding: 16px;
+  margin: 16px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  max-width: 380px;
+  max-width: 360px;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+  }
 }
 
-.md-headline {
+.v-headline {
   text-align: center;
 }
 
-.md-button {
+.v-btn {
   margin: 0px;
   width: 100%;
 }
